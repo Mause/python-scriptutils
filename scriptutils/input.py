@@ -70,7 +70,7 @@ def input_float(minval=None, maxval=None, **kwargs):  # {{{1
 
 
 def input_int(**kwargs):  # {{{1
-    kwargs['cast'] = int
+    # kwargs['cast'] = int
     kwargs.setdefault('prompt', 'Enter an integer')
     return input_float(**kwargs)
 
@@ -100,11 +100,11 @@ def choice(choices, prompt='Select from these choices'):  # {{{1
     if not INTERACTIVE:
         return None
     print prompt + ':'
-    print choice_list
+    choice_list(choices)
     reply = input_int(prompt='#', minval=1, maxval=len(choices))
     if reply is None:
         return None
-    return choices[reply]
+    return choices[int(reply)]
 
 
 def choice_list(choices):  # {{{1
